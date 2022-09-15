@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "nekodict"
 version = "0.1.1"
-description = "Neko Dictionary is a command line EN-ZH dictionary that based on youdao.com"
+description = "Neko Dictionary is a light-weight command line EN-ZH dictionary."
 readme = "README.md"
 authors = [{ name = "BeautyyuYanli", email = "beautyyuyanli@gmail.com" }]
 license = { file = "LICENSE" }

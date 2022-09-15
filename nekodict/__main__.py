@@ -111,7 +111,7 @@ def suggest(session, word):
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Neko Dictionary is a command line EN-ZH dictionary that based on youdao.com')
+        description='Neko Dictionary is a light-weight command line EN-ZH dictionary.')
     parser.add_argument('-v', '--version',
                         action='version', version=__version__)
     parser.add_argument('word', type=str, nargs='*')
@@ -134,7 +134,9 @@ def main():
     if args.word == []:
         while 1:
             word = input(cl('\n^._.^= ∫ ', 'magenta'))
-            if word != 'q':
+            if word == '':
+                continue
+            elif word != 'q':
                 routine(word)
             else:
                 print(cl('\n/ᐠ .ᆺ. ᐟ\ﾉ Bye~', 'yellow'))

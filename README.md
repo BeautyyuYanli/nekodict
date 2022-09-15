@@ -1,6 +1,6 @@
 ![屁姐](banner.jpg)
 # Neko Dictionary
-Neko Dictionary 是一款命令行中英文词典，支持中英互译。
+Neko Dictionary 是一款轻量级命令行中英文词典。
 
 ## 安装
 ```bash
@@ -8,19 +8,21 @@ pip install nekodict
 ```
 
 ## 使用
-```bash
-ndic <word>
-```
+`ndic <word>` 直接查询单词，或 `ndic` 进入交互模式查询单词。
 
-例如:
+直接查询单词例如:
 ```bash
 ndic grammar
 ```
 ![](example1.jpg)
+
+进入交互模式查询单词例如:
 ```bash
-ndic 语法
+ndic
 ```
 ![](example2.jpg)
+
+在交互模式下输入`q`退出
 
 支持模糊搜索，选取最接近的词条:
 ```bash
