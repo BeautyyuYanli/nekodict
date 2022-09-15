@@ -3,7 +3,7 @@ import argparse
 import requests
 from termcolor import colored as cl
 from bs4 import BeautifulSoup
-__version__ = '0.1.2'
+__version__ = '0.1.3'
 
 
 def output(result):
