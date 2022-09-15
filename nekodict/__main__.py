@@ -101,8 +101,11 @@ def suggest(session, word):
         raise Exception('Network error: {}'.format(r.status_code))
     r = r.json()
     if r['result']['code'] != 200:
-        raise Exception('Error from Youdao, {}: {}'.format(
-            r['result']['code'], r['result']['msg']))
+        if r['result']['code'] == 404:
+            return None
+        else:
+            raise Exception('Error from Youdao, {}: {}'.format(
+                r['result']['code'], r['result']['msg']))
     return r['data']['entries'][0]['entry']
 
 
@@ -113,17 +116,32 @@ def main():
                         action='version', version=__version__)
     parser.add_argument('word', type=str, nargs='*')
     args = parser.parse_args()
-    word = " ".join(args.word)
 
-    session = requests.Session()
-    session.headers.update({
-        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:103.0) Gecko/20100101 Firefox/103.0'
-    })
-    word = suggest(session, word)
-    bs = search(session, word)
-    result = process(bs)
-    result['word'] = word
-    output(result)
+    def routine(word):
+        session = requests.Session()
+        session.headers.update({
+            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:103.0) Gecko/20100101 Firefox/103.0'
+        })
+        word = suggest(session, word)
+        if word == None:
+            print('未找到该单词')
+            return
+        bs = search(session, word)
+        result = process(bs)
+        result['word'] = word
+        output(result)
+
+    if args.word == []:
+        while 1:
+            word = input(cl('\n^._.^= ∫ ', 'magenta'))
+            if word != 'q':
+                routine(word)
+            else:
+                print(cl('\n/ᐠ .ᆺ. ᐟ\ﾉ Bye~', 'yellow'))
+                break
+    else:
+        word = " ".join(args.word)
+        routine(word)
 
 
 if __name__ == '__main__':
