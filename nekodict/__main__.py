@@ -1,10 +1,5 @@
-from ast import parse
 import os
-import re
-from string import whitespace
-import sys
 import argparse
-from unittest import result
 import requests
 from termcolor import colored as cl
 from bs4 import BeautifulSoup

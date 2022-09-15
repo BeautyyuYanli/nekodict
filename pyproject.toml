@@ -12,6 +12,7 @@ license = { file = "LICENSE" }
 keywords = ["dictionary", "terminal"]
 dependencies = [
     "beautifulsoup4>=4.9",
+    "requests >= 2.25"
 ]
 requires-python = ">=3"
 
