@@ -22,7 +22,12 @@ ndic 语法
 ```
 ![](example2.jpg)
 
-建议使用 [yakuake](https://apps.kde.org/yakuake/) 启动 Neko Dictionary
+支持模糊搜索，选取最接近的词条:
+```bash
+ndic lexem
+```
+![](example3.jpg)
+
 
 ## 其它
 本程序基于 [GPLv3](LICENSE) 分发
@@ -30,3 +35,5 @@ ndic 语法
 本程序词典源来自[有道词典](https://dict.youdao.com)
 
 本程序模仿了 [termdic](https://github.com/hzwer/termdic)
+
+建议使用 [yakuake](https://apps.kde.org/yakuake/) 启动 Neko Dictionary
