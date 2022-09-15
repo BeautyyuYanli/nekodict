@@ -25,8 +25,8 @@ ndic 语法
 建议使用 [yakuake](https://apps.kde.org/yakuake/) 启动 Neko Dictionary
 
 ## 其它
-本程序基于[GPLv3](LICENSE)分发
+本程序基于 [GPLv3](LICENSE) 分发
 
 本程序词典源来自[有道词典](https://dict.youdao.com)
 
-本程序模仿了[termdic](https://github.com/hzwer/termdic)
+本程序模仿了 [termdic](https://github.com/hzwer/termdic)
