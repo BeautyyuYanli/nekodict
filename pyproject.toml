@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nekodict"
-version = "0.1.3"
+version = "0.1.4"
 description = "Neko Dictionary is a light-weight command line EN-ZH dictionary."
 readme = "README.md"
 authors = [{ name = "BeautyyuYanli", email = "beautyyuyanli@gmail.com" }]
@@ -14,8 +14,9 @@ dependencies = [
     "beautifulsoup4>=4.9",
     "requests >= 2.25",
     "termcolor >= 2.0.1",
+    "playsound >= 1.3"
 ]
-requires-python = ">=3"
+requires-python = ">=3.3"
 
 
 [project.urls]

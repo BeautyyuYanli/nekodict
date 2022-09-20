@@ -1,9 +1,11 @@
 import os
 import argparse
 import requests
+from threading import Thread
 from termcolor import colored as cl
 from bs4 import BeautifulSoup
-__version__ = '0.1.3'
+from playsound import playsound
+__version__ = '0.1.4'
 
 
 def output(result):
@@ -109,11 +111,26 @@ def suggest(session, word):
     return r['data']['entries'][0]['entry']
 
 
+def read(session, word, num):
+    url = 'https://dict.youdao.com/dictvoice'
+    params = {'audio': word, 'type': ''}
+    for i in range(1, num + 1):
+        params['type'] = str(i)
+        r = session.get(url, params=params)
+        if r.status_code != 200:
+            raise Exception('Network error: {}'.format(r.status_code))
+        with open('/tmp/youdao.mp3', 'wb') as f:
+            f.write(r.content)
+        playsound('/tmp/youdao.mp3')
+
+
 def main():
     parser = argparse.ArgumentParser(
         description='Neko Dictionary is a light-weight command line EN-ZH dictionary.')
     parser.add_argument('-v', '--version',
                         action='version', version=__version__)
+    parser.add_argument('-r', '--read', action='store_true',
+                        help='read the word')
     parser.add_argument('word', type=str, nargs='*')
     args = parser.parse_args()
 
@@ -127,6 +144,8 @@ def main():
             print('未找到该单词')
             return
         bs = search(session, word)
+        if args.read:
+            Thread(target=read, args=(session, word, 2), daemon=True).start()
         result = process(bs)
         result['word'] = word
         output(result)
