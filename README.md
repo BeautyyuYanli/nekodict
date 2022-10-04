@@ -30,6 +30,15 @@ ndic lexem
 ```
 ![](example3.jpg)
 
+支持阅读单词(未经跨平台测试):
+```bash
+ndic -r
+```
+
+显示帮助:
+```bash
+ndic -h
+```
 
 ## 其它
 本程序基于 [GPLv3](LICENSE) 分发
